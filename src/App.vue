@@ -39,6 +39,21 @@
             <router-link to="/book" style="color: #FFFFFF">
               <el-menu-item index="2-2">书籍信息</el-menu-item>
             </router-link>
+            <router-link to="/signin" style="color: #FFFFFF">
+              <el-menu-item index="2-3">签到</el-menu-item>
+            </router-link>
+          </el-menu-item-group>
+        </el-submenu>
+
+        <el-submenu index="3">
+          <template slot="title">
+            <i class="el-icon-setting"></i>
+            <span slot="title">配置管理</span>
+          </template>
+          <el-menu-item-group>
+            <router-link to="/config" style="color: #FFFFFF">
+              <el-menu-item index="4-1">面板</el-menu-item>
+            </router-link>
           </el-menu-item-group>
         </el-submenu>
       </el-menu>

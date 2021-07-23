@@ -8,6 +8,7 @@
         clearable>
       </el-input>
       <el-button @click="search()">搜索</el-button>
+      <el-button @click="batchInsertEs()">导入到es</el-button>
     </div>
     <div style="text-align: right">
       <template v-if="listType === 'card'">
@@ -23,10 +24,10 @@
           <div style="display: flex; width: 100%">
             <div style="width: 50%;">
               <img :src="book.bookCover" class="image">
-              <el-link type="primary" :underline="false" style="font-size: 15px;" @click="chapterlist(book.id)">{{book.name}}</el-link>
+              <el-link type="primary" :underline="false" style="font-size: 15px;" @click="chapterlist(book.id)" v-html="book.name"></el-link>
             </div>
             <div class="intro">
-              <div><i class="el-icon-user-solid"></i> {{book.authorId}}</div>
+              <div><i class="el-icon-user-solid"></i><span v-html="book.authorId"></span></div>
               <div style="color: gray;margin-top: 2px;">
                 {{book.categoryId}}<i v-if="book.subCategoryId !== null && book.subCategoryId !== ''">·</i>{{book.subCategoryId}} | {{book.status}}
               </div>
@@ -52,23 +53,26 @@
       <el-table-column
         label="书名">
         <template slot-scope="scope">
-          <el-link type="primary" :underline="false" style="font-size: 15px;" @click="chapterlist(scope.row.id)">
-            《{{scope.row.name}}》
+          <el-link type="primary" :underline="false" style="font-size: 15px;" @click="chapterlist(scope.row.id)" v-html="scope.row.name">
           </el-link>
         </template>
       </el-table-column>
       <el-table-column
-        prop="authorId"
         label="作者">
+        <template slot-scope="scope">
+          <span v-html="scope.row.authorId"></span>
+        </template>
       </el-table-column>
       <el-table-column
         prop="categoryId"
         label="分类">
       </el-table-column>
       <el-table-column
-        prop="intro"
         label="简介"
         width="800">
+        <template slot-scope="scope">
+          <span v-html="scope.row.intro"></span>
+        </template>
       </el-table-column>
     </el-table>
     <el-pagination
@@ -76,6 +80,7 @@
       layout="prev, pager, next"
       :page-size="pager.pageSize"
       :total="total"
+      :current-page="pager.pageNo"
       @current-change="pageChange" style="float: right;margin-top: 5px;">
     </el-pagination>
   </div>
@@ -111,7 +116,7 @@
       },
       pageChange(val) {
         this.pager.pageNo = val;
-        if(this.keyword === '') {
+        if(this.keyword === '' || this.keyword === null) {
           this.page(this.pager);
         } else {
           this.search();
@@ -120,6 +125,7 @@
       search() {
         let that = this;
         if(this.keyword === '') {
+          this.pager.pageNo = 1;
           this.page(this.pager);
           return;
         }
@@ -133,9 +139,22 @@
           .then(resp => {
             console.log(resp);
             let {data} = resp.data;
-            console.log(data.records);
-            this.books = data.records || [];
-            this.total = data.total;
+            this.books = resp.data.data.records || [];
+            this.total = resp.data.data.total;
+          })
+      },
+      batchInsertEs() {
+        Axios.get(this.PUBLIC_PARAM.ipAndHost + '/api/book/insertAllEs')
+          .then(resp => {
+            if(resp.data.code === "0000") {
+              if(resp.data.success) {
+                this.$message.success("导入成功！");
+              } else {
+                this.$message.error("导入失败！")
+              }
+            } else {
+              this.$message.success("导入失败！")
+            }
           })
       },
       showTypeChange(type) {

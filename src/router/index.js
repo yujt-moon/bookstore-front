@@ -9,6 +9,8 @@ import birthday from '../pages/birthday/birthday'
 import ocr from '../pages/tool/ocr'
 import detail from "../pages/book/detail";
 import excel from "../pages/tool/excel";
+import config from "../pages/config/config"
+import signin from "../pages/tool/signin";
 
 Vue.use(Router)
 
@@ -58,6 +60,16 @@ export default new Router({
       path: '/excel',
       name: 'excel',
       component: excel
+    },
+    {
+      path: '/config',
+      name: 'config',
+      component: config
+    },
+    {
+      path: '/signin',
+      name: 'signin',
+      component: signin
     }
   ]
 })

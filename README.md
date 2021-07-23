@@ -25,3 +25,8 @@ npm test
 ```
 
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+
+# 功能列表
+
+## 签到功能参考
+[ELEMENT-UI 日历组件CALENDAR 自定义使用](https://www.freesion.com/article/6636207526/)

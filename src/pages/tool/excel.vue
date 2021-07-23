@@ -2,8 +2,8 @@
     <div>
       <el-button type="primary" @click="downloadTemplate()">
         下载模板
-      </el-button>
-      <a :href="this.PUBLIC_PARAM.ipAndHost + '/api/excel/download'">下载模板</a>
+      </el-button><br/>
+      <a :href="this.PUBLIC_PARAM.ipAndHost + '/api/excel/download'">下载模板</a><br/>
       <div>
         <el-upload
           class="upload-demo"
