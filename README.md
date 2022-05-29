@@ -29,4 +29,4 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 # 功能列表
 
 ## 签到功能参考
-[ELEMENT-UI 日历组件CALENDAR 自定义使用](https://www.freesion.com/article/6636207526/)
+[ELEMENT-UI日历组件CALENDAR自定义使用](https://www.freesion.com/article/6636207526/)

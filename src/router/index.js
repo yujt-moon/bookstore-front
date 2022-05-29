@@ -11,6 +11,7 @@ import detail from "../pages/book/detail";
 import excel from "../pages/tool/excel";
 import config from "../pages/config/config"
 import signin from "../pages/tool/signin";
+import websocket from "../pages/tool/websocket"
 
 Vue.use(Router)
 
@@ -70,6 +71,11 @@ export default new Router({
       path: '/signin',
       name: 'signin',
       component: signin
+    },
+    {
+      path: '/websocket',
+      name: 'websocket',
+      component: websocket
     }
   ]
 })

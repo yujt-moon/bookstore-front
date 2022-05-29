@@ -24,6 +24,9 @@
             <router-link to="/excel" style="color: #FFFFFF">
               <el-menu-item index="1-5">excel</el-menu-item>
             </router-link>
+            <router-link to="/websocket" style="color: #FFFFFF">
+              <el-menu-item index="1-6">websocket</el-menu-item>
+            </router-link>
           </el-menu-item-group>
         </el-submenu>
 

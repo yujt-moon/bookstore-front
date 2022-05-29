@@ -1,10 +1,12 @@
 <template>
     <div>
-      <el-button type="primary" @click="downloadTemplate()">
+      <el-button type="primary" @click="downloadTemplate()" class="space">
         下载模板
-      </el-button><br/>
-      <a :href="this.PUBLIC_PARAM.ipAndHost + '/api/excel/download'">下载模板</a><br/>
-      <div>
+      </el-button>
+
+      <a :href="this.PUBLIC_PARAM.ipAndHost + '/api/excel/download'" class="space" style="display:block;">下载模板</a>
+
+      <div class="space">
         <el-upload
           class="upload-demo"
           :action="this.PUBLIC_PARAM.ipAndHost + '/api/excel/upload'"
@@ -33,5 +35,7 @@
 </script>
 
 <style scoped>
-
+  .space {
+    margin-bottom: 10px;
+  }
 </style>

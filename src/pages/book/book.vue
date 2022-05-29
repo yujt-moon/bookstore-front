@@ -19,7 +19,7 @@
       </template>
     </div>
     <div style="justify-content: space-between;flex-wrap: wrap" v-bind:style="{'display': cardShow}" class="book_div">
-      <div v-for="(book, index) in books" :key="book.id" style="width: 30%; margin-bottom: 10px;">
+      <div v-for="book in books" :key="book.id" style="width: 30%; margin-bottom: 10px;">
         <el-card shadow="hover">
           <div style="display: flex; width: 100%">
             <div style="width: 50%;">
